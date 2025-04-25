@@ -1,0 +1,25 @@
+Sub SaveAsHTML()
+    Dim FilePath As String
+    Dim TempWB As Workbook
+    Dim ws As Worksheet
+    
+    ' Specify the path to save (can be changed)
+    FilePath = ThisWorkbook.Path & "\TableExport.html"
+    If Dir(FilePath) <> "" Then Kill FilePath ' Delete old file
+    
+    ' Copy the current sheet to the temporary workbook
+    Set ws = ActiveSheet
+    ws.Copy
+    Set TempWB = ActiveWorkbook
+    
+    ' Save as HTML
+    TempWB.SaveAs FilePath, xlHtml
+    
+    ' Close the temporary book without saving
+    TempWB.Close SaveChanges:=False
+    
+    ' Open HTML in a browser (optional)
+    Shell "explorer.exe " & FilePath, vbNormalFocus
+    
+    MsgBox "File saved: " & FilePath, vbInformation
+End Sub
