@@ -4,7 +4,7 @@ Sub SaveAsHTML()
     Dim ws As Worksheet
     
     ' Specify the path to save (can be changed)
-    FilePath = ThisWorkbook.Path & "\TableExport.html"
+    FilePath = ThisWorkbook.Path & "\index.html"
     If Dir(FilePath) <> "" Then Kill FilePath ' Delete old file
     
     ' Copy the current sheet to the temporary workbook
